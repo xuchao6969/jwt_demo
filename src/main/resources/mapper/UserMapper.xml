@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xc.jwt_demo.dao.UserDao">
+    <resultMap	id="UserResultMap" type ="com.xc.jwt_demo.entity.User">
+        <id property="userId" column="user_id" />
+        <result property="username" column="username" />
+        <result property="password" column="password" />
+        <result property="email" column="email" />
+        <result property="mobile" column="mobile" />
+        <result property="status" column="status" />
+        <result property="createBy" column="create_by" />
+        <result property="createTime" column="create_time" />
+        <result property="lastUpdateBy" column="last_update_by" />
+        <result property="lastUpdateTime" column="last_update_time" />
+        <result property="department" column="department" />
+        <result property="realName" column="real_name" />
+        <result property="establishVest" column="establish_vest" />
+        <result property="delFlag" column="del_flag" />
+        <result property="token" column="token" />
+    </resultMap>
+
+    <sql id="tableName">t_user</sql>
+
+    <update id="addToken2User" parameterType="java.util.Map">
+        update <include refid="tableName" /> set token = #{token} where user_id = #{userId}
+    </update>
+
+    <select id="getUserByUserName" parameterType="String" resultMap="UserResultMap">
+        select * from <include refid="tableName" /> where username = #{username}
+    </select>
+</mapper>

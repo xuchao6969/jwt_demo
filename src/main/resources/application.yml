@@ -1,0 +1,35 @@
+#SpringBoot服务端口配置
+server:
+  port: 8080
+
+spring:
+  thymeleaf:
+    prefix: "classpath:/templates/"
+    suffix: ".html"
+  #数据源配置
+  datasource:
+    name: jwt_demo
+    url: jdbc:mysql://localhost:3306/jwt_demo?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver #com.mysql.jdbc.Driver
+#      maxActive: 20
+#      initialSize: 1
+#      maxWait: 60000
+#      minIdle: 1
+
+#Mybatis实体类配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+#token有效期
+expire_time: 9000000
+
+#token加密secret
+token_secret: jwtsecret
+
+#日志输出路径
+logging:
+  path: F:/dilog/
+
+
